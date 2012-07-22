@@ -2,18 +2,18 @@
 # Created by eXistZ
 
 
-VERSION="v1.1.3-CODE_RED"
+VERSION="v1.0"
 KERNEL_SRC="./"
 
-# Linaro Android 4.5 (GCC 4.5.4) toolchain - http://www.linaro.org
+# Linaro Android 4.7 (GCC 4.7.1) toolchain - http://www.linaro.org
 export CROSS_COMPILE="../android/prebuilt/linux-x86/toolchain/arm-eabi-4.7.1/bin/arm-eabi-"
 
 export ARCH=arm
-export LOCALVERSION="-TalonACE_7x30-$VERSION"
+export LOCALVERSION="-CodeRED-$VERSION"
 
 START=$(date +%s)
 
-make talon_msm7230_defconfig
+make codered_msm7230_defconfig
 
 if [ -e ./releasetools/system/lib/modules ]; then
  rm -rf ./releasetools/system/lib/modules
@@ -35,7 +35,7 @@ make -j`grep 'processor' /proc/cpuinfo | wc -l`
 cp $KERNEL_SRC/arch/arm/boot/zImage $KERNEL_SRC/releasetools/kernel/
 cd $KERNEL_SRC/releasetools
 rm -f *.zip
-zip -r TalonACE_7x30-$VERSION.zip *
+zip -r CodeRED-$VERSION.zip *
 rm $KERNEL_SRC/releasetools/kernel/zImage
 
 cd $KERNEL_SRC
