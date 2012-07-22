@@ -3,7 +3,7 @@
 
 
 VERSION="v1.0"
-KERNEL_SRC="./"
+KERNEL_SRC="/home/joe/eXkern"
 
 # Linaro Android 4.7 (GCC 4.7.1) toolchain - http://www.linaro.org
 export CROSS_COMPILE="../android/prebuilt/linux-x86/toolchain/arm-eabi-4.7.1/bin/arm-eabi-"
