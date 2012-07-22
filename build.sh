@@ -2,11 +2,11 @@
 # Created by eXistZ
 
 
-VERSION="v1.1.3"
-KERNEL_SRC="/usr/src/htc-kernel-msm7x30"
+VERSION="v1.1.3-CODE_RED"
+KERNEL_SRC="./"
 
 # Linaro Android 4.5 (GCC 4.5.4) toolchain - http://www.linaro.org
-export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
+export CROSS_COMPILE="../android/prebuilt/linux-x86/toolchain/arm-eabi-4.7.1/bin/arm-eabi-"
 
 export ARCH=arm
 export LOCALVERSION="-TalonACE_7x30-$VERSION"
