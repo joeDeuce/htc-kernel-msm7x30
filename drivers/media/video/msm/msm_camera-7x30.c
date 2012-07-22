@@ -2880,42 +2880,6 @@ static void msm_vfe_sync(struct msm_vfe_resp *vdata,
 				}
 			}
 
-        case VFE_MSG_OUTPUT_V:
-                //printk(KERN_ERR "dis_en = %d \n", *sync->vpefn.dis);
-                if (*(sync->vpefn.dis)) {
-                        if (sync->cropinfo != NULL)
-                                vdata->vpe_bf.vpe_crop =
-                                *(struct video_crop_t *)(sync->cropinfo);
-                        memset(&(vdata->vpe_bf), 0, sizeof(vdata->vpe_bf));
-                        vdata->vpe_bf.y_phy = vdata->phy.y_phy;
-                        vdata->vpe_bf.cbcr_phy = vdata->phy.cbcr_phy;
-                        vdata->vpe_bf.ts = (qcmd->ts);
-                        vdata->vpe_bf.frame_id = vdata->phy.frame_id;
-                        qcmd->command = vdata;
-                        msm_enqueue_vpe(&sync->vpe_q, &qcmd->list_vpe_frame);
-                        return;
-                } else {
-                        if (sync->vpefn.vpe_cfg_update(sync->cropinfo)) {
-                                CDBG("%s: msm_enqueue video frame to vpe "
-                                        "time = %ld\n",
-                                        __func__, qcmd->ts.tv_nsec);
-                                sync->vpefn.send_frame_to_vpe(
-                                        vdata->phy.y_phy,
-                                        vdata->phy.cbcr_phy,
-                                        &(qcmd->ts));
-                                kfree(qcmd);
-                                return;
-                        } else {
-                                CDBG("%s: msm_enqueue video frame_q\n",
-                                        __func__);
-                                msm_enqueue(&sync->frame_q,
-                                        &qcmd->list_frame);
-			if (atomic_read(&qcmd->on_heap))
-				atomic_add(1, &qcmd->on_heap);
-                                break;
-                         }
-                }
-
 	case VFE_MSG_SNAPSHOT:
 		if (sync->pp_mask & (PP_SNAP | PP_RAW_SNAP)) {
 			CDBG("%s: PP_SNAP in progress: pp_mask %x\n",
