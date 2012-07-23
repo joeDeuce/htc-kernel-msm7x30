@@ -13,7 +13,7 @@ export LOCALVERSION="-CodeRED-$VERSION"
 
 START=$(date +%s)
 
-make codered_msm7230_defconfig
+make CodeRED_default
 
 if [ -e ./releasetools/system/lib/modules ]; then
  rm -rf ./releasetools/system/lib/modules
