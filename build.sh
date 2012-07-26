@@ -27,12 +27,14 @@ make modules_install
 
 for i in `find mod_inst -name "*.ko"`; do
  cp $i ./releasetools/system/lib/modules/
+ cp $i ../android/device/htc/msm7x30-common/msm7230/
 done
 
 rm -rf ./mod_inst
 
 make -j`grep 'processor' /proc/cpuinfo | wc -l`
 cp $KERNEL_SRC/arch/arm/boot/zImage $KERNEL_SRC/releasetools/kernel/
+cp $KERNEL_SRC/arch/arm/boot/zImage ../android/device/htc/msm7x30-common/msm7230/kernel
 cd $KERNEL_SRC/releasetools
 rm -f *.zip
 zip -r CodeRED-$VERSION.zip *
