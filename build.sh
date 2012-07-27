@@ -2,7 +2,7 @@
 # Created by eXistZ
 
 
-VERSION="v1.0"
+VERSION="v1.1"
 KERNEL_SRC="/home/joe/eXkern"
 
 # Linaro Android 4.7 (GCC 4.7.1) toolchain - http://www.linaro.org
@@ -13,7 +13,7 @@ export LOCALVERSION="-CodeRED-$VERSION"
 
 START=$(date +%s)
 
-make CodeRED_default
+make codered_1.1_defconfig
 
 if [ -e ./releasetools/system/lib/modules ]; then
  rm -rf ./releasetools/system/lib/modules
